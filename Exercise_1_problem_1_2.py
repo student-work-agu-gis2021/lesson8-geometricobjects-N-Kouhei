@@ -40,6 +40,7 @@ print(point1.geom_type)
 
 # YOUR CODE HERE 2 to define create_line_geom()
 def create_line_geom(points):
+  
   line1 = LineString(points)
   return line1
 
