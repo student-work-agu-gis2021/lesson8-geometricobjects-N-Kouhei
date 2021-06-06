@@ -123,6 +123,7 @@ c = Point(70.0,10.20)
 poly = LineString([a,b,c])
 poly1 = create_poly_geom(poly)
 
+
 # CODE FOR TESTING YOUR SOLUTION
 print(poly1)
 
