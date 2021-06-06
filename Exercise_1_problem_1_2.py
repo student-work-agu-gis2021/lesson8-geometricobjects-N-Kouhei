@@ -65,6 +65,7 @@ pointB = Point(100.22,-3.20)
 lineAB = LineString([pointA , pointB])
 line1 = lineAB
 
+
 # CODE FOR TESTING YOUR SOLUTION
 print(line1)
 
