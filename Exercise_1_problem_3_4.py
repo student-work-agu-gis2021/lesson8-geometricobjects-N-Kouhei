@@ -70,6 +70,11 @@ print('dest_points length:', len(dest_points))
 
 # YOUR CODE HERE 4 to append points in orig_points and dest_points
 from shapely.geometry import Point
+for row in data.iterrows():
+  o = Point(row["from_x"],row["from_y"])
+  d = Point(row["to_x"],row["to_y"])
+  orig_points.append(o)
+  dest_points.append(d)
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -96,7 +101,7 @@ assert len(dest_points) == len(data), "Number of destination points must be the 
 # 
 
 # YOUR CODE HERE 5
-
+lines = []
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -116,6 +121,9 @@ print('lines length:', len(lines))
 # YOUR CODE HERE 6 to append LineString to lines
 #raise NotImplementedError()
 from shapely.geometry import LineString
+for orig, dest in zip(orig_points,dest_points):
+  line = LineString([orig,dest])
+  lines.append(line)
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -129,6 +137,9 @@ assert len(lines) == len(data), "There should be as many lines as there are rows
 # 
 
 # YOUR CODE HERE 7 to find total length
+total_length = 0.0
+for line in lines:
+  total_length+=line.length
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -146,6 +157,32 @@ print("Total length of all lines is", round(total_length, 2))
 # **Note: avoid using the same variable names as earlier inside your functions!** Functions are often defined at the top of the script file (or jupyter notebook), and now that we have them here at the very end you might accidentally alter an existing variable inside your functions. To avoid this, alter the variable names inside your own functions if you re-use code from this notebook. 
 
 # YOUR CODE HERE 8 to define create_od_lines() and calculate_total_distance()
+def create_od_lines(o_p,d_p):
+  """ 
+  -----Parameter-----
+  o_p : Shapely Point -objects
+  d_p : Shapely Point -objects
+
+  -----Return-----
+  od_lines : list of LineStrings
+  """
+  for orig,dest in o_p,d_p:
+    line=LineString([orig,dest])
+    od_lines.append(line)
+  return od_lines
+  
+def calculate_total_distance(line):
+  """
+  -----Parameter-----
+  line : list of LineString geometries
+
+  -----Return-----
+  total_length : int
+  """
+  total_distance=0
+  for line in od_lines:
+    total_distance+=line.length
+  return total_distance
 
 
 # CODE FOR TESTING YOUR SOLUTION

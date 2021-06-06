@@ -200,6 +200,14 @@ except Exception as e:
 
 # YOUR CODE HERE 8 to define get_area()
 def get_area(polygon):
+  """ Take a Shapely's Polygon -object as input and returns the area of that geometry.
+
+  -----Parameter-----
+  polygon : Polygon object
+
+  -----Return-----
+  polygon.area : geometry
+  """
   return polygon.area()
 
 # Test and demonstrate the usage of the function:
@@ -226,7 +234,20 @@ except Exception as e:
 
 
 #  YOUR CODE HERE 9 to define get_length()
+def get_length(geom):
+  """Check the type of the input and returns the length of the line if input is LineString and length of the exterior ring if input is Polygon.
 
+  -----Parameter-----
+  geom
+
+  -----Return-----
+  geom.geom.length (if LineString)
+  geom.exterior.length (if Polygon)
+  """
+  if geom.geom_type=="LineString":
+    return geom.length
+  elif geom.geom_type=="Polygon":
+    return geom.exterior.length
 # Test and demonstrate the usage of the function:
 
 get_length(poly1)
