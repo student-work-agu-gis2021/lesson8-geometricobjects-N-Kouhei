@@ -157,9 +157,15 @@ except Exception as e:
 
 #  YOUR CODE HERE 6 to define get_centroid()
 def get_centroid(geom):
-  """ 
-  """
+  """ Take any kind of Shapely's geometric -object as an input, and return a centroid of that geometry.
 
+  -----Parameter-----
+  geom : geometoric
+
+  -----Return-----
+  geom.centroid() : centroid
+  """
+  
   assert type(geom) in (Point,LineString,Polygon),"Input should be a Shapely geometry!"
   return geom.centroid()
 # Test and demonstrate the usage of the function. You can, for example, create shapely objects using the functions you created in problem 1 and print out information about their centroids:
