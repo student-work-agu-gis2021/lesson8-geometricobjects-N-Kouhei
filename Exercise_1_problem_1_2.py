@@ -165,6 +165,7 @@ def get_centroid(geom):
   -----Return-----
   geom.centroid() : centroid
   """
+
   
   assert type(geom) in (Point,LineString,Polygon),"Input should be a Shapely geometry!"
   return geom.centroid()
