@@ -96,6 +96,18 @@ except Exception as e:
 
 # YOUR CODE HERE 4 to define create_poly_geom()
 def create_poly_geom(coords):
+  """ Create and return a Polygon object based on parameter.
+
+  -----Parameter-----
+  coords : LineString?
+
+  -----Return-----
+  poly : Polygon object
+  """
+
+  assert type(coords)==list,"Input should be a list!"
+  assert len(coords)>=3,"Polygon object requires at least three Points!"
+  assert type(coords)==tuple,"All list values should be coordinate tuples!"
   poly = Polygon(coords)
   return poly
 
@@ -109,7 +121,7 @@ poly1 = 0
 a = Point(45.2,22.34)
 b = Point(100.22,-3.20)
 c = Point(70.0,10.20)
-poly = LineString([Point(45.2,22.34),Point(100.22,-3.20),Point(70.0,10.20)])
+poly = LineString([a,b,c])
 poly1 = create_poly_geom(poly)
 
 # CODE FOR TESTING YOUR SOLUTION
