@@ -51,7 +51,8 @@ def create_line_geom(points):
 
   assert type(points)==list,"Input should be a list!"
   assert len(points)>=2,"LineString object requires at least two Points!"
-  assert type(points)=="shapely","All list values should be Shapely Point objects!"
+  for p in points:
+    assert type(p)=="shapely","All list values should be Shapely Point objects!"
 
   line1 = LineString(points)
   return line1
@@ -107,7 +108,9 @@ def create_poly_geom(coords):
 
   assert type(coords)==list,"Input should be a list!"
   assert len(coords)>=3,"Polygon object requires at least three Points!"
-  assert type(coords)==tuple,"All list values should be coordinate tuples!"
+  for c in coords:
+    assert type(c)==tuple,"All list values should be coordinate tuples!"
+
   poly = Polygon(coords)
   return poly
 
@@ -120,8 +123,8 @@ poly1 = 0
 a = Point(45.2,22.34)
 b = Point(100.22,-3.20)
 c = Point(70.0,10.20)
-poly = LineString([a,b,c])
-poly1 = create_poly_geom(poly)
+poly = Polygon([a,b,c])
+poly1 = poly
 
 
 # CODE FOR TESTING YOUR SOLUTION
@@ -153,12 +156,21 @@ except Exception as e:
 # 
 
 #  YOUR CODE HERE 6 to define get_centroid()
+def get_centroid(geom):
+  """ 
+  """
 
+  assert type(geom) in (Point,LineString,Polygon),"Input should be a Shapely geometry!"
+  return geom.centroid()
 # Test and demonstrate the usage of the function. You can, for example, create shapely objects using the functions you created in problem 1 and print out information about their centroids:
 # 
 
 #  YOUR CODE HERE 7 to define some objects
-
+border = [(-180,90),(-180,-90),(180,-90),(180,90)]
+hole = [[(-170,80),(-170,-80),(170,-80),(170,80)]]
+frame = Polygon(shell=border,holes=hole)
+poly1 = frame
+print(frame)
 
 # CODE FOR TESTING YOUR SOLUTION
 centroid = get_centroid(poly1)
