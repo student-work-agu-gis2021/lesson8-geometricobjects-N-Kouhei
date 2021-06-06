@@ -26,7 +26,7 @@ print(data.head())
 # 
 
 # YOUR CODE HERE 2 to set `data`
-
+data = data[["from_x","from_y","to_x","to_y"]]
 # CODE FOR TESTING YOUR SOLUTION
 print(list(data.columns))
 
@@ -35,7 +35,8 @@ print(list(data.columns))
 # 
 
 # YOUR CODE HERE 3 to define empty lists orig_points and dest_points
-
+orig_points=[]
+dest_points=[]
 # CODE FOR TESTING YOUR SOLUTION
 
 # List length should be zero at this point:
